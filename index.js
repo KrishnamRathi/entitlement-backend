@@ -2,10 +2,12 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import db from './firebase.js';
 import { collection, addDoc } from 'firebase/firestore';
+import dotenv from 'dotenv';
 
 
 const app = express();
 const PORT = process.env.PORT || 3001
+dotenv.config();
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
