@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import db from './firebase.js';
 import { collection, addDoc } from 'firebase/firestore';
 import dotenv from 'dotenv';
+import cors from 'cors';
 
 
 const app = express();
@@ -11,6 +12,7 @@ dotenv.config();
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+app.use(cors());
 
 app.get('/', async function (req, res) {
   res.send('Welcome to Entitlement Automation !!');
