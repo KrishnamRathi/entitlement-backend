@@ -35,6 +35,20 @@ app.post('/address', async (req, res) => {
   }
 })
 
+app.post('/sim_info', async (req, res) => {
+  const { mcc, mnc, mobile_no } = req.body;
+  try{
+    let docRef = await addDoc(collection(db, "sim_info"), {
+      mcc,
+      mnc,
+      mobile_no
+    });
+    res.status(200).send({message: "Information added successfully", docId: docRef.id});
+  }catch(e){
+    res.status(400).send({message: "Failed to add sim Information", error: e});
+  }
+})
+
 
 
 app.listen(PORT, () => {
